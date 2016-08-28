@@ -33,12 +33,13 @@ class MapViewController: UIViewController {
 		view.addSubview(segmentedControl)
 		
 		let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor, constant: 8)
-		let leadingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor)
-		let trailingConstaint = segmentedControl.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor)
+		let margins = view.layoutMarginsGuide
+		let leadingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor)
+		let trailingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
 		
 		topConstraint.active = true
 		leadingConstraint.active = true
-		trailingConstaint.active = true
+		trailingConstraint.active = true
 	}
 	
 	override func viewDidLoad() {
