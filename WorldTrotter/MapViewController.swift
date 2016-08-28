@@ -6,8 +6,8 @@
 //  Copyright © 2016 Jeff Meehan. All rights reserved.
 //
 
-import UIKit
 import MapKit
+import UIKit
 
 class MapViewController: UIViewController {
 	// When a view controller is created, its view property is nil.
