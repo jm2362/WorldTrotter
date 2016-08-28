@@ -21,6 +21,16 @@ class MapViewController: UIViewController {
 		
 		// Set it as *the* view of this view controller.
 		view = mapView
+		
+		let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
+		segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+		
+		// An older system for scaling interfaces - autoresizing masks.
+		// These translated constraints will often conflict with explicit
+		// constraints in the layout and cause an unsatisfiable constraints 
+		// probem.
+		segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(segmentedControl)
 	}
 	
 	override func viewDidLoad() {
