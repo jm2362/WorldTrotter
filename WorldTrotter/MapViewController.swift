@@ -16,14 +16,20 @@ class MapViewController: UIViewController {
 	// If a view controller is asked for its view and its vies is nil,
 	// then the loadView method is called.
 	override func loadView() {
+		
 		// Create a map view.
 		mapView = MKMapView()
 		
 		// Set it as *the* view of this view controller.
 		view = mapView
 		
-		let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
+		let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satallite"])
 		segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+		segmentedControl.selectedSegmentIndex = 0
+		
+		segmentedControl.addTarget(self,
+		                           action: #selector( mapTypeChanged(_:) ),
+		                           forControlEvents: .ValueChanged)
 		
 		// An older system for scaling interfaces - autoresizing masks.
 		// These translated constraints will often conflict with explicit
@@ -40,6 +46,22 @@ class MapViewController: UIViewController {
 		topConstraint.active = true
 		leadingConstraint.active = true
 		trailingConstraint.active = true
+		
+	}
+	
+	func mapTypeChanged(segControl: UISegmentedControl) {
+		
+		switch segControl.selectedSegmentIndex {
+		case 0:
+			mapView.mapType = .Standard
+		case 1:
+			mapView.mapType = .Hybrid
+		case 2:
+			mapView.mapType = .Satellite
+		default:
+			break
+		}
+		
 	}
 	
 	override func viewDidLoad() {
